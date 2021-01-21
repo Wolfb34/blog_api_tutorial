@@ -1,22 +1,21 @@
-FROM alpine:latest
+FROM python:3.6-alpine
 
 WORKDIR /app
 
-RUN apk add --update py3-pip
+COPY requirements.txt /app/
 
-RUN apk add --update pipenv
+RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev libffi-dev
 
-COPY Pipfile /app/
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . /app
+COPY . /app/
+
+EXPOSE 5000
 
 ENV FLASK_ENV=development
 
-ENV DATABASE_URL=postgres://name:password@houst:port/blog_api_db
+ENV PORT=5000
 
 ENV JWT_SECRET_KEY=hhgaghhgsdhdhdd
 
-RUN pipenv shell
-RUN pipenv install
-
-CMD ["python3", "run.py"]
+CMD ["python", "run.py"]

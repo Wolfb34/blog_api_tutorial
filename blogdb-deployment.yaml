@@ -13,11 +13,11 @@ spec:
                 app: blogdb-postgres
         spec:
             containers:
-                - name: blogdb-container
+                - name: postgres-container
                   image: postgres:13.1-alpine
                   imagePullPolicy: "IfNotPresent"
                   ports:
-                      - containerPort: 5432
+                      - containerPort: 80
                   envFrom:
                       - configMapRef:
                           name: blogdb-config
