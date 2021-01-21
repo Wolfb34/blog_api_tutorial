@@ -5,5 +5,5 @@ metadata:
     labels:
         app: blogdb-postgres
 data:
-    POSTGRES_DB: blogdb
-    POSTGRES_USER: blogadmin
+    POSTGRES_DB: postgresdb
+    POSTGRES_USER: postgresadmin
