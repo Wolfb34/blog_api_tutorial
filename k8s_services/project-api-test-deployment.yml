@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: project-api-test-deployment
+  labels: 
+    app: project-api-test
+spec: 
+  replicas: 3
+  selector: 
+    matchLabels:
+      app: project-api-test
+  template:
+    metadata:
+      labels:   
+        app: project-api-test
+    spec: 
+      containers: 
+      - name: project-api-test-container
+        image: localhost:32000/project-api-test 
+        ports: 
+        - containerPort: 80
