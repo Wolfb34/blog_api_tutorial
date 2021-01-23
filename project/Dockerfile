@@ -19,3 +19,8 @@ ENV PORT=5000
 ENV JWT_SECRET_KEY=hhgaghhgsdhdhdd
 
 CMD ["python", "run.py"]
+
+# 'upgrade' should be 'init' when installing fresh i believe
+CMD ["python", "manage.py", "db", "init"]
+CMD ["python", "manage.py", "db", "migrate"]
+CMD ["python", "manage.py", "db", "upgrade"]
