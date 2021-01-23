@@ -5,7 +5,7 @@ metadata:
   labels: 
     app: project-api-test
 spec: 
-  replicas: 3
+  replicas: 1
   selector: 
     matchLabels:
       app: project-api-test
@@ -19,3 +19,16 @@ spec:
         image: localhost:32000/project-api-test 
         ports: 
         - containerPort: 80
+        env: 
+          # - name: SERVICE_POSTGRES_SERVICE_HOST
+            # value: service-postgres.default.svc.cluster.local
+          - name: POSTGRES_DB_USER
+            valueFrom: 
+              secretKeyRef:
+                name: blogdb-secret
+                key: POSTGRES_USER
+          - name: POSTGRES_DB_PSW
+            valueFrom: 
+              secretKeyRef:
+                name: blogdb-secret
+                key: POSTGRES_PASSWORD

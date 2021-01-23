@@ -6,7 +6,7 @@ spec:
   type: NodePort 
   ports: 
   - protocol: TCP 
-    nodePort: 30002
+    nodePort: 30005
     port: 5000
     targetPort: 5000
   selector: 
