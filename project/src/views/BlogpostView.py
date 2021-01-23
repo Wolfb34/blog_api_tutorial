@@ -1,6 +1,6 @@
 #/src/views/BlogpostView.py
 from flask import request, g, Blueprint, json, Response
-from ..shared.Authentication import Auth
+# from ..shared.Authentication import Auth
 from ..models.BlogpostModel import BlogpostModel, BlogpostSchema
 
 blogpost_api = Blueprint('blogpost_api', __name__)
@@ -8,7 +8,7 @@ blogpost_schema = BlogpostSchema()
 
 
 @blogpost_api.route('/', methods=['POST'])
-@Auth.auth_required
+# @Auth.auth_required
 def create():
   """
   Create Blogpost Function
@@ -44,7 +44,7 @@ def get_one(blogpost_id):
   return custom_response(data, 200)
 
 @blogpost_api.route('/<int:blogpost_id>', methods=['PUT'])
-@Auth.auth_required
+# @Auth.auth_required
 def update(blogpost_id):
   """
   Update A Blogpost
@@ -66,7 +66,7 @@ def update(blogpost_id):
   return custom_response(data, 200)
 
 @blogpost_api.route('/<int:blogpost_id>', methods=['DELETE'])
-@Auth.auth_required
+# @Auth.auth_required
 def delete(blogpost_id):
   """
   Delete A Blogpost
