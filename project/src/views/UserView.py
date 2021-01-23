@@ -38,7 +38,8 @@ def get_all():
   """
   users = UserModel.get_all_users()
   ser_users = user_schema.dump(users, many=True).data
-  return custom_response(ser_users, 200)
+  # return custom_response(ser_users, 200)
+  return "Testing testing!!"
 
 @user_api.route('/<int:user_id>', methods=['GET'])
 # @Auth.auth_required
