@@ -5,6 +5,12 @@ from dotenv import load_dotenv, find_dotenv
 
 load_dotenv(find_dotenv())
 
+db_user = os.environ.get('POSTGRES_DB_USER')
+db_psw = os.environ.get('POSTGRES_DB_PSW')
+# db_host = os.environ.get('SERVICE_POSTGRES_SERVICE_HOST')
+db_host = '10.152.183.167:5432'
+
+
 class Development(object):
     """
     Development environment configuration
@@ -13,7 +19,9 @@ class Development(object):
     TESTING = False
     SQLALCHEMY_TRACK_MODIFICATIONS=False
     JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI = 'postgresql://{0}:{1}@{2}/postgresdb'.format(
+    db_user, db_psw, db_host
+)
 
 class Production(object):
     """
