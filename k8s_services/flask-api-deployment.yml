@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: project-api-test-deployment
+  name: flask-api-deployment
   labels:
-    app: project-api-test
+    app: flask-api
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: project-api-test
+      app: flask-api
   template:
     metadata:
       labels:
-        app: project-api-test
+        app: flask-api
     spec:
       containers:
-      - name: project-api-test-container
-        image: localhost:32000/project-api-test
+      - name: flask-api-container
+        image: localhost:32000/flask-api
         imagePullPolicy: Always
         ports:
         - containerPort: 5000

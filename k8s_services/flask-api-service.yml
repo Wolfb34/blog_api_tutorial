@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: project-api-test-service
+  name: flask-api-service
 spec:
   type: NodePort
   ports:
@@ -10,4 +10,4 @@ spec:
     port: 5000
     targetPort: 5000
   selector:
-    app: project-api-test
+    app: flask-api
