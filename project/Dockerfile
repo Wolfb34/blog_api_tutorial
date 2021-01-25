@@ -18,7 +18,7 @@ ENV PORT=5000
 
 ENV JWT_SECRET_KEY=hhgaghhgsdhdhdd
 
-CMD sh startup1.sh
+CMD sh startup.sh
 
 # 'upgrade' should be 'init' when installing fresh i believe
 # CMD ["python", "manage.py", "db", "init"]

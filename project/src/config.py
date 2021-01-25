@@ -8,7 +8,7 @@ load_dotenv(find_dotenv())
 db_user = os.environ.get('POSTGRES_DB_USER')
 db_psw = os.environ.get('POSTGRES_DB_PSW')
 # db_host = os.environ.get('SERVICE_POSTGRES_SERVICE_HOST')
-db_host = os.getenv("SERVICE_POSTGRES_PORT")[6:]
+db_host = '10.152.183.167:5432'
 
 
 class Development(object):
