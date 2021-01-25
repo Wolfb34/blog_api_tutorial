@@ -2,35 +2,34 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: project-api-test-deployment
-  labels: 
+  labels:
     app: project-api-test
-spec: 
+spec:
   replicas: 1
-  selector: 
+  selector:
     matchLabels:
       app: project-api-test
   template:
     metadata:
-      labels:   
+      labels:
         app: project-api-test
-    spec: 
-      containers: 
+    spec:
+      containers:
       - name: project-api-test-container
-        image: localhost:32000/project-api-test 
-        ports: 
-        - containerPort: 80
-        env: 
+        image: localhost:32000/project-api-test
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+        env:
           # - name: SERVICE_POSTGRES_SERVICE_HOST
             # value: service-postgres.default.svc.cluster.local
           - name: POSTGRES_DB_USER
-            valueFrom: 
+            valueFrom:
               secretKeyRef:
                 name: blogdb-secret
                 key: POSTGRES_USER
           - name: POSTGRES_DB_PSW
-            valueFrom: 
+            valueFrom:
               secretKeyRef:
                 name: blogdb-secret
                 key: POSTGRES_PASSWORD
-          # - name: JWT_SECRET_KEY 
-          #   value: hhgaghhgsdhdhdd
