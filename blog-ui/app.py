@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    url = os.getenv("PROJECT_API_TEST_SERVICE_PORT")[6:]
+    url = os.getenv("FLASK_API_SERVICE_PORT")[6:]
     url = "http://" + url + "/api/v1/blogposts"
     print(url)
     response = requests.get(url)
