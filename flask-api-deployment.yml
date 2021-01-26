@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: flask-api-container
-        image: localhost:32000/flask-api
+        image: localhost:32000/flask-api:v1
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
