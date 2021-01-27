@@ -14,7 +14,7 @@ spec:
         spec:
             containers:
                 - name: postgres-container
-                  image: postgres:13.1-alpine
+                  image: postgres:13.1
                   imagePullPolicy: "IfNotPresent"
                   ports:
                       - containerPort: 5432
@@ -30,6 +30,12 @@ spec:
                   volumeMounts:
                       - mountPath: /var/lib/postgresql/data
                         name: postgredb
+                ## LEAVE THIS, and enable when 'PANIC could not locate a valid checkpoint record' shows
+                #   args:
+                #     - gosu  
+                #     - postgres
+                #     - pg_resetwal 
+                #     - /var/lib/postgresql/data
             volumes:
                 - name: postgredb
                   persistentVolumeClaim:
