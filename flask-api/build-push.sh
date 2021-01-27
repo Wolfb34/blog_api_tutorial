@@ -1,1 +1,1 @@
-docker build -t localhost:32000/flask-api:v1 . && docker push localhost:32000/flask-api:v1
+docker build -t localhost:32000/flask-api:v1 /sc/flask-api/Dockerfile && docker push localhost:32000/flask-api:v1
