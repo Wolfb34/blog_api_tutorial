@@ -10,8 +10,8 @@ microk8s kubectl apply -f blogdb-service.yaml
 
 # Delete flask-api stuff
 echo "Creating the flask-api stuff ..."
-microk8s kubectl apply -f flask-api-deployment.yml
-microk8s kubectl apply -f flask-api-service.yml
+microk8s kubectl apply -f flask-api-deployment.yaml
+microk8s kubectl apply -f flask-api-service.yaml
 
 # Delete blog-ui stuff
 echo "Creating the blog-ui stuff ..."
