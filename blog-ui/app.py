@@ -11,13 +11,11 @@ def index():
     url = "http://" + url + "/api/v1/blogposts"
     print(url)
     response = requests.get(url)
-    blog_string = response.content
-    blog_temp = blog_string.strip('][')
-    print(blog_temp)
-    if not blog_temp:
+    blog_json = response.json()
+    print(blog_json)
+    if not blog_json:
         return render_template("empty.html")
-    blog_list = blog_temp.split(", ")
-    return render_template("index.html", members=blog_list)
+    return render_template("index.html", members=blog_json)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
