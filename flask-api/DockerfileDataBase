@@ -10,9 +10,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . /app/
 
-CMD sh startup1.sh
+ENV FLASK_ENV=development
 
-# 'upgrade' should be 'init' when installing fresh i believe
-# CMD ["python", "manage.py", "db", "init"]
-# CMD ["python", "manage.py", "db", "migrate"]
-# CMD ["python", "manage.py", "db", "upgrade"]
+CMD sh startup1.sh
