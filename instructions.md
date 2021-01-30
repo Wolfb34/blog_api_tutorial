@@ -2,6 +2,16 @@
 
 Ensure that storage, registry, metallb and istio are enabled in microk8s.
 
+Create the TLS secret:
+`kubectl create -n istio-system secret tls istio-ingressgateway-certs --key tls/tls.key --cert tls/tls.crt`
+
+Copy the certification to the right folders:
+```
+sudo mkdir -p /etc/istio/ingressgateway-certs
+sudo cp tls/tls.key /etc/istio/ingressgateway-certs
+sudo cp tls/tls.crt /etc/istio/ingressgateway-certs
+```
+
 Add the three images to the repository:
 
 ```
@@ -12,9 +22,9 @@ sudo docker build -t localhost:32000/init-database:v1 -f DockerfileDataBase flas
 
 Run `microk8s helm3 install blog-ui-chart blog-ui-chart`.
 
-Run `kubectl get svc istio-ingressgateway -n istio-system`. The external IP shown here is used to access the website and the API.
+Run `kubectl get svc istio-ingressgateway -n istio-system`. The external IP shown here is used to access the website.
 
-Get to the website with `<ip>:80` and to the API with `<ip>:443`
+Get to the website with `http://<ip>:443`.
 
 *Scaling Instructions*
 The application can be scaled horizontally by executing `kubectl scale --replicas=<n> deployment <deployment>` where `n` is the desired number and `deployment` is one of `blog-api-chart` and `blog-ui-chart`.

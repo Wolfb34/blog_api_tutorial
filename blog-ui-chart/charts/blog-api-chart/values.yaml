@@ -36,9 +36,9 @@ istio:
     - uri:
         exact: /
     - uri:
-        prefix: /api/v1/users/
+        exact: /api/v1/users/
     - uri:
-        prefix: /api/v1/blogposts/
+        exact: /api/v1/blogposts/
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -59,8 +59,8 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: LoadBalancer
-  port: 443
+  type: ClusterIP
+  port: 8080
 
 ingress:
   enabled: false
