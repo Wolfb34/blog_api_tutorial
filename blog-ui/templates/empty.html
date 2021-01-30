@@ -2,7 +2,7 @@
     <head>
         <style type="text/css">
             body {
-                background: green;
+                background: black;
                 color: white;
             }
             div.container {
@@ -19,5 +19,18 @@
     </head>
     <body>
         No blogs have been created yet.
+
+        Be the first one to create a blog! 
+        <br><br>
+        <form action="{{url + '/api/v1/blogposts/'}}" method="POST">
+          <label for="title">Blog Title</label><br>
+          <input type="text" id="title" name="title" value=""><br>
+          <label for="contents">Blog Contents</label><br>
+          <input type="text" id="contents" name="contents" value=""><br>
+          <label for="user_id">User-ID</label><br>
+          <input type="text" id="user_id" name="user_id" value=""><br>
+          <input type="submit" value="Submit">
+        </form>
+
     </body>
 </html>
