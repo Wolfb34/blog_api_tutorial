@@ -12,4 +12,4 @@ COPY . /app/
 
 ENV FLASK_ENV=development
 
-CMD sh startup1.sh
+CMD sh init.sh

@@ -16,4 +16,4 @@ ENV FLASK_ENV=development
 
 ENV PORT=5000
 
-CMD sh startup2.sh
+CMD sh run.sh
