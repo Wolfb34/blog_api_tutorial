@@ -12,7 +12,12 @@ def create():
   """
   Create User Function
   """
-  req_data = request.get_json()
+
+  req_data = {}
+  req_data['name'] = request.form['name']
+  req_data['email'] = request.form['email']
+  req_data['password'] = request.form['password']
+
   data, error = user_schema.load(req_data)
 
   if error:
@@ -28,7 +33,8 @@ def create():
   user.save()
   ser_data = user_schema.dump(user).data
   # token = Auth.generate_token(ser_data.get('id'))
-  # return custom_response({'jwt_token': token}, 201)
+  message = {'Success': 'User has been created'}
+  return custom_response(message, 201)
 
 @user_api.route('/', methods=['GET'])
 # @Auth.auth_required

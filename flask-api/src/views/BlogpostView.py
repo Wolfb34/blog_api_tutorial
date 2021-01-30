@@ -13,15 +13,32 @@ def create():
   """
   Create Blogpost Function
   """
-  req_data = request.get_json()
-  req_data['owner_id'] = g.user.get('id')
+  req_data = {}
+  req_data['title'] = request.form['title']
+  req_data['contents'] = request.form['contents']
+  req_data['owner_id'] = request.form['user_id']
   data, error = blogpost_schema.load(req_data)
+  
   if error:
     return custom_response(error, 400)
+  
   post = BlogpostModel(data)
   post.save()
-  data = blogpost_schema.dump(post).data
+  # data = blogpost_schema.dump(post).req_data
+  data = blogpost_schema.dump(post)
+
   return custom_response(data, 201)
+
+  # req_data = request.get_json()
+  # # req_data['owner_id'] = g.user.get('id')
+  # data, error = blogpost_schema.load(req_data)
+  # if error:
+  #   return "testing errors"
+  #   return custom_response(error, 400)
+  # post = BlogpostModel(data)
+  # post.save()
+  # data = blogpost_schema.dump(post).data
+  # return custom_response(data, 201)
 
 @blogpost_api.route('/', methods=['GET'])
 def get_all():
