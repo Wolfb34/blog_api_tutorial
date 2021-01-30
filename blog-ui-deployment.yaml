@@ -17,11 +17,8 @@ spec:
             containers:
                 - name: blog-ui-container
                   image: localhost:32000/blog-ui:v1
-                  imagePullPolicy: IfNotPresent
+                  imagePullPolicy: Always
                   ports:
                       - containerPort: 5000
-                  envFrom:
-                      - configMapRef:
-                          name: blogdb-config
                   tty: true
                   stdin: true

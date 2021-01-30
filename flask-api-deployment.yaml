@@ -20,13 +20,15 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
-        envFrom:
-            - configMapRef:
-                name: blogdb-config
         env:
           # - name: SERVICE_POSTGRES_SERVICE_HOST
             # value: service-postgres.default.svc.cluster.local
-          - name: POSTGRES_PASSWORD
+          - name: POSTGRES_DB_USER
+            valueFrom:
+              secretKeyRef:
+                name: blogdb-secret
+                key: POSTGRES_USER
+          - name: POSTGRES_DB_PSW
             valueFrom:
               secretKeyRef:
                 name: blogdb-secret

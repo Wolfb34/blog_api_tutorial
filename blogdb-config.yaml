@@ -7,5 +7,3 @@ metadata:
 data:
     POSTGRES_DB: postgresdb
     POSTGRES_USER: postgresadmin
-    POSTGRES_ENV_NAME: POSTGRES_SERVICE_PORT
-    API_ENV_NAME: FLASK_API_SERVICE_PORT

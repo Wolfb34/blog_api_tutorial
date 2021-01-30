@@ -1,6 +1,6 @@
 # !/bin/bash
 
-# Delete the blogdb deployments and services and such
+# Delete the blogdb deployments and services and such 
 echo "Creating the blogdb stuff ..."
 microk8s kubectl apply -f blogdb-storage.yaml
 microk8s kubectl apply -f blogdb-secret.yaml
@@ -17,4 +17,4 @@ microk8s kubectl apply -f flask-api-service.yaml
 echo "Creating the blog-ui stuff ..."
 microk8s kubectl apply -f blog-ui-deployment.yaml
 microk8s kubectl apply -f blog-ui-service.yaml
-microk8s kubectl apply -f blog-ui-ingress.yaml
+

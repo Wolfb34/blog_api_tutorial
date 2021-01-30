@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: Secret
-metadata:
-  name: {{ include "blog-ui-chart.fullname" . }}-tls
-data:
-{{ (.Files.Glob "tls/*").AsSecrets | indent 2}}
-type: kubernetes.io/tls

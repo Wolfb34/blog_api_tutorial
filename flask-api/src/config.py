@@ -5,10 +5,10 @@ from dotenv import load_dotenv, find_dotenv
 
 load_dotenv(find_dotenv())
 
-db_user = os.environ.get('POSTGRES_USER')
-db_psw = os.environ.get('POSTGRES_PASSWORD')
+db_user = os.environ.get('POSTGRES_DB_USER')
+db_psw = os.environ.get('POSTGRES_DB_PSW')
 # db_host = os.environ.get('SERVICE_POSTGRES_SERVICE_HOST')
-db_host = os.getenv(os.getenv("POSTGRES_ENV_NAME"))[6:]
+db_host = os.getenv("SERVICE_POSTGRES_PORT")[6:]
 
 
 class Development(object):
