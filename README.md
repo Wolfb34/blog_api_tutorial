@@ -1,4 +1,4 @@
-*Deploy Instructions*
+## Deploy Instructions
 
 Ensure that storage, registry, metallb and istio are enabled in microk8s.
 
@@ -26,13 +26,13 @@ Run `kubectl get svc istio-ingressgateway -n istio-system`. The external IP show
 
 Get to the website with `http://<ip>:443`.
 
-*Scaling Instructions*
+## Scaling Instructions
 The application can be scaled horizontally by executing `kubectl scale --replicas=<n> deployment <deployment>` where `n` is the desired number and `deployment` is one of `blog-api-chart` and `blog-ui-chart`.
 
-*Uninstall Instructions*
+## Uninstall Instructions
 The application can be uninstalled by executing `microk8s helm3 delete blog-ui-chart`.
 
-*Upgrade Instructions*
+## Upgrade Instructions
 Execute a canary deployment by adding a canary development to the chart and then executing `microk8s helm3 upgrade blog-ui-chart blog-ui-chart`. This can include adding a canaryVersion to Chart.yaml and updating the Version of the chart.
 
 Execute a deployment rollout by upgrading the image or updating the template, updating the AppVersion and Version in the topmost Chart.yaml file and then executing `microk8s helm3 upgrade blog-ui-chart blog-ui-chart`.
