@@ -10,6 +10,6 @@ spec:
     - port: {{ .Values.service.port }}
       targetPort: 5000
       protocol: TCP
-      name: http
+      name: {{ include "blog-api-chart.fullname" . }}-http
   selector:
     {{- include "blog-api-chart.selectorLabels" . | nindent 4 }}

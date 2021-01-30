@@ -9,5 +9,7 @@ spec:
   ports:
     - port: {{ .Values.service.port }}
       targetPort: 5432
+      protocol: TCP
+      name: {{ include "blog-ui-chart.fullname" . }}-http
   selector:
     {{- include "blog-db-chart.selectorLabels" . | nindent 4 }}
