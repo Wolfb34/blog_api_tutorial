@@ -1,6 +1,6 @@
 #src/app.py
 
-from flask import Flask, render_template
+from flask import Flask
 
 from .config import app_config
 from .models import db, bcrypt
@@ -16,7 +16,7 @@ def create_app(env_name):
   """
   
   # app initiliazation
-  app = Flask(__name__, static_url_path='')
+  app = Flask(__name__)
 
   app.config.from_object(app_config[env_name])
 
@@ -32,7 +32,7 @@ def create_app(env_name):
     """
     example endpoint
     """
-    return render_template('index.html')
+    return 'Congratulations! Your part 2 endpoint is working'
 
   return app
 

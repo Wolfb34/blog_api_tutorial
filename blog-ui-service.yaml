@@ -3,11 +3,9 @@ kind: Service
 metadata:
     name: blog-ui-service
 spec:
-    type: NodePort
+    type: LoadBalancer
     ports:
-        - protocol: TCP
-          nodePort: 30003
-          port: 8080
+        - port: 8090
           targetPort: 5000
     selector:
         app: blog-ui
