@@ -33,7 +33,7 @@ def create():
   user.save()
   ser_data = user_schema.dump(user).data
   # token = Auth.generate_token(ser_data.get('id'))
-  message = {'Success': 'User has been created'}
+  message = {'Success': 'User has been created', ser_data}
   return custom_response(message, 201)
 
 @user_api.route('/', methods=['GET'])
