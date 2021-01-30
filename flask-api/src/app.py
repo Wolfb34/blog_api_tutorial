@@ -4,6 +4,7 @@ from flask import Flask
 
 from .config import app_config
 from .models import db, bcrypt
+from flask import render_template
 
 # import user_api blueprint
 from .views.UserView import user_api as user_blueprint
@@ -32,7 +33,7 @@ def create_app(env_name):
     """
     example endpoint
     """
-    return 'Congratulations! Your part 2 endpoint is working'
+    return render_template('index.html')
 
   return app
 
