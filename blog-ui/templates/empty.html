@@ -31,6 +31,25 @@
           <input type="text" id="user_id" name="user_id" value=""><br>
           <input type="submit" value="Submit">
         </form>
+        
+        
 
+        <br><br>
+        Create an account! 
+        <form action="{{url + '/api/v1/users/'}}" method="POST">
+            <label for="title">Create User</label><br>
+            <input type="text" id="name" name="name" value=""><br>
+            <label for="email">Email</label><br>
+            <input type="text" id="email" name="email" value=""><br>
+            <label for="password">Password</label><br>
+            <input type="text" id="password" name="password" value=""><br>
+            <input type="submit" value="Submit">
+        </form>
+
+        <form action="{{url + '/api/v1/users/'}}">
+            <input type="submit" value="Go to users" />
+        </form>
+        
+        <p> {{url}} </p>
     </body>
 </html>
