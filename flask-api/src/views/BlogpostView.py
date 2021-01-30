@@ -28,7 +28,7 @@ def create():
   # data = blogpost_schema.dump(post).req_data
   data = blogpost_schema.dump(post)
 
-  return custom_response({'Success': 'Your blog with the name' + req_data['title'] + 'has been posted. Go back to the main page now.'}, 200)
+  return custom_response({'Success': 'Your blog with the name: ' + req_data['title'] + ' has been posted. Go back to the main page now.'}, 200)
   # return custom_response(data, 201)
 
 @blogpost_api.route('/', methods=['GET'])
