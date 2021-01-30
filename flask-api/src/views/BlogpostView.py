@@ -28,17 +28,7 @@ def create():
   # data = blogpost_schema.dump(post).req_data
   data = blogpost_schema.dump(post)
 
-  return custom_response(data, 201)
-
-  # req_data = request.get_json()
-  # # req_data['owner_id'] = g.user.get('id')
-  # data, error = blogpost_schema.load(req_data)
-  # if error:
-  #   return "testing errors"
-  #   return custom_response(error, 400)
-  # post = BlogpostModel(data)
-  # post.save()
-  # data = blogpost_schema.dump(post).data
+  return custom_response({'Success': 'Your blog with the name' + req_data['title'] + 'has been posted. Go back to the main page now.'}, 200)
   # return custom_response(data, 201)
 
 @blogpost_api.route('/', methods=['GET'])

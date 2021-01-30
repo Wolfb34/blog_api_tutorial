@@ -13,8 +13,8 @@ def index():
     blog_json = response.json()
     print(blog_json)
     if not blog_json:
-        return render_template("empty.html")
-    return render_template("index.html", members=blog_json)
+        return render_template("empty.html", url=base_url)
+    return render_template("index.html", members=blog_json, url=base_url)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
