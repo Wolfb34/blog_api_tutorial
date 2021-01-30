@@ -9,7 +9,11 @@ spec:
     - port:
         number: {{ .Values.service.port }}
         name: {{ include "blog-ui-chart.fullname" . }}-http
-        protocol: HTTP
+        protocol: HTTPS
+      tls:
+          mode: SIMPLE
+          serverCertificate: /etc/istio/ingressgateway-certs/tls.crt
+          privateKey: /etc/istio/ingressgateway-certs/tls.key
       hosts:
         {{- range .Values.istio.hosts }}
         - {{ . | quote}}
