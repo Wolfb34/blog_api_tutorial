@@ -20,5 +20,12 @@ spec:
                           secretKeyRef:
                               name: {{ include "blog-api-chart.fullname" . }}-secret
                               key: POSTGRES_PASSWORD
+            initContainers:
+                - name : {{ .Chart.Name }}-wait
+                  image: "{{ .Values.initImage.repository }}:{{ .Values.initImage.appVersion }}"
+                  imagePullPolicy: {{ .Values.initImage.pullPolicy }}
+                  args:
+                      - "pod"
+                      - "-lapp.kubernetes.io/name=blog-db-chart"
             restartPolicy: {{ .Values.initJob.restartPolicy}}
     backoffLimit: {{ .Values.initJob.backoffLimit}}
