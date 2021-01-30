@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: {{ include "blog-api-chart.fullname" . }}
+    name: {{ include "blog-api-chart.fullname" . }}-deployment
     labels:
         {{- include "blog-api-chart.labels" . | nindent 8 }}
 spec:

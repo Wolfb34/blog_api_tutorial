@@ -2,7 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 1
+replicaCount: 3
 
 image:
   repository: localhost:32000/blog-ui
@@ -13,6 +13,14 @@ apiEnvName: BLOG_API_CHART_SERVICE
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
+
+istio:
+  selector: ingressgateway
+  hosts:
+    - "*"
+  match:
+    - uri:
+        exact: /
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -37,7 +45,7 @@ service:
   port: 80
 
 ingress:
-  enabled: true
+  enabled: false
   annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
@@ -46,8 +54,7 @@ ingress:
       paths:
           - /
   tls:
-   - secretName: my-tls-secret
-     hosts:
+   - hosts:
        - my-blog.com
 
 resources: {}
