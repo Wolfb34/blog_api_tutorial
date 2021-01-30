@@ -14,7 +14,7 @@ def create():
   Create Blogpost Function
   """
   req_data = request.get_json()
-  req_data['owner_id'] = g.user.get('id')
+  req_data['owner_id'] = 1
   data, error = blogpost_schema.load(req_data)
   if error:
     return custom_response(error, 400)
@@ -54,14 +54,14 @@ def update(blogpost_id):
   if not post:
     return custom_response({'error': 'post not found'}, 404)
   data = blogpost_schema.dump(post).data
-  if data.get('owner_id') != g.user.get('id'):
-    return custom_response({'error': 'permission denied'}, 400)
-  
+  # if data.get('owner_id') != g.user.get('id'):
+  #   return custom_response({'error': 'permission denied'}, 400)
+
   data, error = blogpost_schema.load(req_data, partial=True)
   if error:
     return custom_response(error, 400)
   post.update(data)
-  
+
   data = blogpost_schema.dump(post).data
   return custom_response(data, 200)
 
@@ -75,12 +75,12 @@ def delete(blogpost_id):
   if not post:
     return custom_response({'error': 'post not found'}, 404)
   data = blogpost_schema.dump(post).data
-  if data.get('owner_id') != g.user.get('id'):
-    return custom_response({'error': 'permission denied'}, 400)
+  # if data.get('owner_id') != 1:
+  #   return custom_response({'error': 'permission denied'}, 400)
 
   post.delete()
   return custom_response({'message': 'deleted'}, 204)
-  
+
 
 def custom_response(res, status_code):
   """
@@ -91,4 +91,3 @@ def custom_response(res, status_code):
     response=json.dumps(res),
     status=status_code
   )
-
