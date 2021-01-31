@@ -73,7 +73,7 @@ def update(blogpost_id):
   data = blogpost_schema.dump(post).data
   return custom_response(data, 200)
 
-@blogpost_api.route('/<int:blogpost_id>', methods=['DELETE'])
+@blogpost_api.route('/delete/<int:blogpost_id>', methods=['POST'])
 # @Auth.auth_required
 def delete(blogpost_id):
   """
@@ -87,7 +87,7 @@ def delete(blogpost_id):
   #   return custom_response({'error': 'permission denied'}, 400)
 
   post.delete()
-  return custom_response({'message': 'deleted'}, 204)
+  return render_template("blog_deleted.html")
 
 
 def custom_response(res, status_code):

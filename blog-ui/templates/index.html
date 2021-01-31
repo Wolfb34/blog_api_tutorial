@@ -2,7 +2,7 @@
     <head>
         <style type="text/css">
             body {
-                background: green;
+                background: darkgreen;
                 color: white;
             }
             div.container {
@@ -21,13 +21,15 @@
         <ul>
             {% for member in members: %}
             <li>
-                <h2> {{ member.title }}</h2> <br />
-                <div> {{ member.contents }} </div>
-                <p> ID: {{member.id}} </div> 
+                <h2> Title: {{ member.title }}</h2> <br />
+                <div> Contents: {{ member.contents }} </div>
+                <p> ID: {{member.id}} </p> </div>
 
-                <form action="{{url + '/api/v1/blogposts/' + member.id}}" method="DELETE">
+                <form action="{{url + '/api/v1/blogposts/delete/' + member.id}}" method="POST">
                     <input type="submit" value="Delete this blogpost" />
-                </form>
+                </form> 
+                <hr>
+
             </li>
             {% endfor %}
         </ul>
@@ -43,6 +45,5 @@
           <input type="text" id="user_id" name="user_id" value=""><br>
           <input type="submit" value="Submit">
         </form>
-
     </body>
 </html>
