@@ -18,6 +18,7 @@ initJob:
     pullPolicy: Always
     restartPolicy: Never
     backoffLimit: 0
+    appVersion: v1
 
 imagePullSecrets: []
 nameOverride: ""

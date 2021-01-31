@@ -12,7 +12,7 @@ spec:
         spec:
             containers:
                 - name: {{ .Chart.Name }}-init
-                  image: "{{ .Values.initJob.repository }}:{{ .Chart.AppVersion }}"
+                  image: "{{ .Values.initJob.repository }}:{{ .Values.initJob.appVersion }}"
                   imagePullPolicy: {{ .Values.initJob.pullPolicy }}
                   envFrom:
                     - configMapRef:
