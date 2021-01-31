@@ -33,8 +33,8 @@ def create():
   user.save()
   ser_data = user_schema.dump(user).data
   # token = Auth.generate_token(ser_data.get('id'))
-  message = {'Success': 'User has been created. Your user id is ' + ser_data['id'] + '.'}
-  return custom_response(message, 201)
+  # message = {'Success': 'User has been created. Your user id is ' + ser_data['id'] + '.'}
+  return render_template('user_post.html', user=ser_data)
 
 @user_api.route('/', methods=['GET'])
 # @Auth.auth_required
@@ -44,6 +44,8 @@ def get_all():
   """
   users = UserModel.get_all_users()
   ser_users = user_schema.dump(users, many=True).data
+  if not ser_users:
+      return render_template('users_empty.html')
   for user in ser_users: 
     user['id'] = str(user['id'])
   return render_template('user_get.html', users=ser_users)

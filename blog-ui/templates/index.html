@@ -24,6 +24,7 @@
                 <h2> Title: {{ member.title }}</h2> <br />
                 <div> Contents: {{ member.contents }} </div>
                 <p> ID: {{member.id}} </p> </div>
+                <p> Created at: {{members.created_at }} </p>
 
                 <form action="{{url + '/api/v1/blogposts/delete/' + member.id}}" method="POST">
                     <input type="submit" value="Delete this blogpost" />

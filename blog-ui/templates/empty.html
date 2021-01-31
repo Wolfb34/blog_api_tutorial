@@ -42,14 +42,12 @@
             <label for="email">Email</label><br>
             <input type="text" id="email" name="email" value=""><br>
             <label for="password">Password</label><br>
-            <input type="text" id="password" name="password" value=""><br>
+            <input type="password" id="password" name="password" value=""><br>
             <input type="submit" value="Submit">
         </form>
 
         <form action="{{url + '/api/v1/users/'}}">
             <input type="submit" value="Go to users" />
         </form>
-        
-        <p> {{url}} </p>
     </body>
 </html>
