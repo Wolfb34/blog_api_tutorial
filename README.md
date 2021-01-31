@@ -40,4 +40,4 @@ sudo rm -rf /etc/istio/ingressgateway-certs
 ## Upgrade Instructions
 Execute a canary deployment by adding a canary development to the chart and then executing `microk8s helm3 upgrade blog-ui-chart blog-ui-chart`. This includes adding a canaryVersion and a canaryReplicaCount to values.yaml and updating the Version of the chart.
 
-Execute a deployment rollout by upgrading the image or updating the template, updating the AppVersion and Version in the topmost Chart.yaml file and then executing `microk8s helm3 upgrade blog-ui-chart blog-ui-chart`.
+Execute a deployment rollout by upgrading an image or updating a template, updating the AppVersion and Version in the relevant Chart.yaml file and then executing `microk8s helm3 upgrade blog-ui-chart blog-ui-chart`.
