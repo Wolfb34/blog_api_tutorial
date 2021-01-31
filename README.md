@@ -27,7 +27,7 @@ Run `kubectl get svc istio-ingressgateway -n istio-system`. The external IP show
 Get to the website with `http://<ip>:443`.
 
 ## Scaling Instructions
-The application can be scaled horizontally by executing `kubectl scale --replicas=<n> deployment <deployment>` where `n` is the desired number and `deployment` is one of `blog-api-chart` and `blog-ui-chart`.
+The application can be scaled horizontally by executing `kubectl scale --replicas=<n> deployment <deployment>` where `n` is the desired number and `deployment` is one of `blog-api-chart-deployment` and `blog-ui-chart-deployment`.
 
 ## Uninstall Instructions
 The application can be uninstalled by executing `microk8s helm3 delete blog-ui-chart`.
