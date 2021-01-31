@@ -1,6 +1,6 @@
 #/src/views/UserView
 
-from flask import request, json, Response, Blueprint, g
+from flask import request, json, Response, Blueprint, g, render_template
 from ..models.UserModel import UserModel, UserSchema
 # from ..shared.Authentication import Auth
 
@@ -44,7 +44,9 @@ def get_all():
   """
   users = UserModel.get_all_users()
   ser_users = user_schema.dump(users, many=True).data
-  return custom_response(ser_users, 200)
+  for user in ser_users: 
+    user['id'] = str(user['id'])
+  return render_template('user_get.html', users=ser_users)
 
 @user_api.route('/<int:user_id>', methods=['GET'])
 # @Auth.auth_required
@@ -75,13 +77,13 @@ def update():
   ser_user = user_schema.dump(user).data
   return custom_response(ser_user, 200)
 
-@user_api.route('/me', methods=['DELETE'])
+@user_api.route('/delete/<int:user_id>', methods=['POST'])
 # @Auth.auth_required
-def delete():
+def delete(user_id):
   """
   Delete a user
   """
-  user = UserModel.get_one_user(g.user.get('id'))
+  user = UserModel.get_one_user(user_id)
   user.delete()
   return custom_response({'message': 'deleted'}, 204)
 
