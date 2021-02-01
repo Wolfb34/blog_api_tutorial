@@ -2,6 +2,9 @@
 
 Ensure that storage, helm3, registry, metallb and istio are enabled in microk8s.
 
+Enable istio-injection:
+`microk8s kubectl label namespace default istio-injection=enabled`
+
 Create the TLS secret:
 `kubectl create -n istio-system secret tls istio-ingressgateway-certs --key tls/tls.key --cert tls/tls.crt`
 
